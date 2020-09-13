@@ -2,7 +2,7 @@ format pe console 4.0
 include 'WIN32AX.INC'
  
 .data
-        FileTitle db 'C:\Users\denis\Documents\ABC\file_home1.txt',0
+        FileTitle db 'file_home1.txt',0
         hFile dd ?
         nSize dd ?
         lpBytesRead dd ?
