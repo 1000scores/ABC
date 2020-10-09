@@ -1,8 +1,8 @@
-; ??????? ????? ???198
-; 20 ???????
-; ??????: ??????????? ?????????, ??????? ????????? ?? ???? ?????? ???????
-; ? ?????? ???????????????? ???????, ????? ???? ?????? ???????? ????????????
-; ? ??????? ????????? ???????
+; Мелехин Денис БПИ198
+; 20 вариант
+; Задача: Разработать программу, которая принимает на вход размер массива
+; и массив соответствующего размера, после чего меняет значение минимального
+; и первого элементов местами
 
 format PE console
                                                                                                                
@@ -27,9 +27,9 @@ section '.data' data readable writable
         oneSymb         db    '%d ',                       0
 
 
-        size            dd       0    ; ?????? ???????
+        size            dd       0    ; Размер массива
                                                                                                                                                                   
-        my_array        rd     100    ; ????????? ??????
+        my_array        rd     100    ; Введенный массив
                                                                                                                                                               
         i               dd       ?
                                                                     
@@ -39,9 +39,9 @@ section '.data' data readable writable
                                                                                                                                                          
         flag            dd       1
 
-        min             dd       ?    ; ??????????? ??????? ???????
+        min             dd       ?    ; Минимальный элемент массива
 
-        first           dd       ?    ; ?????? ??????? ???????
+        first           dd       ?    ; Первый элемент массива
                                                                                                                
         NULL = 0                                                                                               
                                                                                                                
@@ -50,7 +50,7 @@ section '.code' code readable executable
 
         start:                                                                                                 
                 input_again:
-                ; ??????????? ???? ? ????????????
+                ; Запрашиваем ввод у пользователя
                 push ask_size                                                                                
                 call [printf]
                                                                                                                
@@ -63,35 +63,35 @@ section '.code' code readable executable
                 jle wrong_input                                                                             
                 jg ok_input
 
-        ; ???????? ??? ????????????? ?????
+        ; Действия при некоррректном вводе
         wrong_input:
                 push wrong_size                                                                              
                 call [printf]                                                                                  
                 jmp input_again                                                                                  
 
-        ; ???????? ??? ?????????? ?????
+        ; Действия при корректном вводе
         ok_input:
-                ; ????????? ??????
+                ; Считываем массив
                 push [size]                                                                               
                 push my_array                                                                                      
                 call read_array
-                ; ??????? ???????
+                ; Находим минимум
                 call find_minimum
 
-                ; ?????? ??????? ?????? ? ???????????
+                ; Меняем местами первый и минимальный
                 call swap
                 mov edx, [min]
                 mov [my_array], edx
 
-                ; ??????? ???????? ??????
+                ; Выводим итоговый массив
                 push [size]
                 push my_array                                                                                      
                 call write_array
 
-                ; ????????? ????????
+                ; Завершаем алгоритм
                 jmp finish
 
-        ; ????????? ???????
+        ; Считвание массива
         read_array:
                 push eax                                                                                       
                 mov eax, esp
@@ -134,7 +134,7 @@ section '.code' code readable executable
                                                                                                                
         ret
 
-        ; ????? ??????? ?? ?????
+        ; Вывод массива на экран
         write_array:                                                                                              
 
                 push eax                                                                                       
@@ -185,7 +185,7 @@ section '.code' code readable executable
                                                                                                                
         ret                                                                                                    
 
-        ; ????? ???????? ? ???????
+        ; Поиск минимума в массиве
         find_minimum:
                 push eax
                 mov eax, esp
@@ -229,7 +229,7 @@ section '.code' code readable executable
 
         ret
 
-        ; ????? ??????? ???????????? ? ??????? ?????????
+        ; Смена местами минимального и первого элементов
         swap:
                 push eax
                 mov eax, esp
@@ -282,7 +282,7 @@ section '.code' code readable executable
 
         ret
 
-        ; ????? ?????????
+        ; Конец алгоритма
         finish:                                                                                                
                 call [getch]                                                                                   
                                                                                                                
