@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/denis/Documents/HSE/ABC/projects/task03/main.cpp
+mutex
+-
+condition_variable
+-
+iostream
+-
+pthread.h
+-
+semaphore.h
+-
+
