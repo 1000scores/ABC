@@ -44,7 +44,7 @@ void *worker1(void *args) {
             sem_post(&full12);
         } else {
             good_pins--;
-            // cout << "Bad pin: " << pins[i] << endl;
+            cout << "(worker1) Pin with bad curve (<GOOD_CURVE) to garbage: " << pins[i] << endl;
             // Выбрасывает кривую булавку
         }
     }
@@ -74,7 +74,7 @@ void *worker3(void *args) {
         sem_wait(&full23);
         pthread_mutex_lock(&mut23);
         if(buffer23[out_buffer23] >= 120) {
-            cout << "(worker3) One on final pins (>=120): " <<  buffer23[out_buffer23] << endl;
+            cout << "(worker3) One of final pins (>=120): " <<  buffer23[out_buffer23] << endl;
         }
         out_buffer23 = (out_buffer23 + 1) % BUFFER23_SIZE;
         pthread_mutex_unlock(&mut23);
