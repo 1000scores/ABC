@@ -97,7 +97,7 @@ int main() {
 #pragma omp task depend(in: pin_y) depend(out: pin_z)
         worker2_one(buffer12.take(), buffer23);
 
-#pragma omp task depend(in: pin_z) depend(out: pin_z)
+#pragma omp task depend(in: pin_z)
         worker3_one(buffer23.take());
     }
 
